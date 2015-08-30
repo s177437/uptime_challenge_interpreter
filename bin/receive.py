@@ -2,7 +2,7 @@ import pika
 import couchdb
 import ast
 
-def connectToRabbitMq(message):
+def connectToCouchDB(message):
     couch= couchdb.Server("http://10.1.0.57:5984/")
     db=None 
     try :
@@ -11,18 +11,21 @@ def connectToRabbitMq(message):
         db=couch["configcourse"]
     configdict= ast.literal_eval(message)
     db.save(configdict)
-credentials = pika.PlainCredentials('guest', 'guest')
-connection = pika.BlockingConnection(pika.ConnectionParameters('10.1.0.56',5672, '/', credentials))
-channel=connection.channel() 
-channel.queue_declare(queue='stianstestq')
+
+def connectToRabbitMQ():
+    credentials = pika.PlainCredentials('guest', 'guest')
+    connection = pika.BlockingConnection(pika.ConnectionParameters('10.1.0.56',5672, '/', credentials))
+    channel=connection.channel() 
+    channel.queue_declare(queue='stianstestq')
+    channel.basic_consume(callback, queue='stianstestq', no_ack=True)
+    channel.start_consuming()
+
 #print 'Waiting for messages...'
 def callback(channel, method, properties, body) :
 	#print "Received message...."+ body 
-        connectToRabbitMq(body)
-channel.basic_consume(callback, queue='stianstestq', no_ack=True)
-channel.start_consuming()
+        connectToCouchDB(body)
 
-
+connectToRabbitMQ()
 
 
 
