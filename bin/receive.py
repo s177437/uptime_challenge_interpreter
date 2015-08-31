@@ -10,7 +10,8 @@ def connectToCouchDB(message):
     except couchdb.http.PreconditionFailed :
         db=couch["configcourse"]
     configdict= ast.literal_eval(message)
-    db.save(configdict)
+    for name,key in configdict.items(): 
+        db[name]=configdict
 
 def connectToRabbitMQ():
     credentials = pika.PlainCredentials('guest', 'guest')
@@ -20,9 +21,8 @@ def connectToRabbitMQ():
     channel.basic_consume(callback, queue='stianstestq', no_ack=True)
     channel.start_consuming()
 
-#print 'Waiting for messages...'
 def callback(channel, method, properties, body) :
-	print "Received message...."+ body 
+#	print "Received message...."+ body 
         connectToCouchDB(body)
 
 connectToRabbitMQ()
