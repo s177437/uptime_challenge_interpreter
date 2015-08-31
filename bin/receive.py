@@ -22,7 +22,7 @@ def connectToRabbitMQ():
 
 #print 'Waiting for messages...'
 def callback(channel, method, properties, body) :
-	#print "Received message...."+ body 
+	print "Received message...."+ body 
         connectToCouchDB(body)
 
 connectToRabbitMQ()
