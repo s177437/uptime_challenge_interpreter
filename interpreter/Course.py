@@ -2,7 +2,7 @@
 class Course ():
     coursename = ""
     groups = []
-
+    
     def get_coursename(self):
         return self.__coursename
     
@@ -11,5 +11,7 @@ class Course ():
     
     def get_groups(self):
         return self.groups
-    def set_groups(self, value):
-        return self.groups
+    def setGroupList(self,group):
+        self.groups.append(group)
+        
+        
