@@ -13,5 +13,4 @@ class Teacher ():
 
 
     def set_course(self, value):
-
         self.__course = value
