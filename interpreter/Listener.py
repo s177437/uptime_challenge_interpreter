@@ -32,6 +32,9 @@ class Listener() :
             logic.createGroupAccount(userList)
 
 
+listen = Listener()
+listen.listenContinouslyToQueue("masterq")
+
 
 
 
