@@ -1,5 +1,6 @@
 import pika
 from DbLogic import *
+from DbConfig import *
 class Listener() :
 
     def listenToQueue(self):
@@ -18,8 +19,10 @@ class Listener() :
 
     def callback(self,channel, method, properties, body) :
         logic= DbLogic()
+        dbconfig=DbConfig()
         if "config" in body :
             logic.createQueue(body, "firstContent")
+            dbconfig.ListenQToFetchConfig(body)
         elif "report" in body :
             logic.createQueue(body,"firstContent")
         elif "account" in body :
@@ -27,6 +30,7 @@ class Listener() :
             logic.receiveOneElementFromQ(body)
             userList=logic.convertUserElementFromQToList()
             logic.createGroupAccount(userList)
+
 
 
 
