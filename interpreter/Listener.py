@@ -24,6 +24,7 @@ class Listener() :
     def callback(self,channel, method, properties, body) :
         logic= DbLogic()
         dbconfig=DbConfig()
+        print body
         if "config" in body :
             logic.createQueue(body, "firstContent")
             dbconfig.ListenQToFetchConfig(body)
@@ -37,7 +38,7 @@ class Listener() :
 
 
 listen = Listener()
-listen.listenContinouslyToQueue("masterq")
+listen.listenContinouslyToQueue("mainq")
 
 
 
