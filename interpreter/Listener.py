@@ -10,6 +10,10 @@ class Listener() :
         self.listenContinouslyToQueue(quename)
 
 
+    def connectToRabbitMQ(self):
+        credentials = pika.PlainCredentials('guest', 'guest')
+        connection = pika.BlockingConnection(pika.ConnectionParameters('10.1.0.56',5672, '/', credentials))
+        return connection
     def listenContinouslyToQueue(self, quename):
         connection=self.connectToRabbitMQ()
         channel=connection.channel()
