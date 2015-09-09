@@ -32,7 +32,7 @@ class Listener() :
             logic.createQueue(body,"firstContent")
         elif "account" in body :
             logic.createQueue(body, "firstContent")
-            logic.receiveOneElementFromQ(body)
+            logic.receiveOneElementFromQ("createuserq")
             userList=logic.convertUserElementFromQToList()
             logic.createGroupAccount(userList)
 
