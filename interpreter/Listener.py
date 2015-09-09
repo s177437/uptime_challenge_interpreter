@@ -27,6 +27,7 @@ class Listener() :
         print body
         if "config" in body :
             logic.createQueue(body, "firstContent")
+            print "you end up here"
             dbconfig.ListenQToFetchConfig(body)
         elif "report" in body :
             logic.createQueue(body,"firstContent")
