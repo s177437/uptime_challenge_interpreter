@@ -12,6 +12,10 @@ class Course ():
     def get_groups(self):
         return self.groups
     def setGroupList(self,group):
-        self.groups.append(group)
+        for i in self.groups :
+            if group.get_groupname() == i.get_groupname() :
+                print "The group already exists in the accountobject"
+            else :
+                self.groups.append(group)
         
         
