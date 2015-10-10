@@ -1,4 +1,4 @@
-class Group () :
+class Group():
     groupname = ""
     students = []
 
@@ -11,8 +11,5 @@ class Group () :
     def set_groupname(self, value):
         self.__groupname = value
 
-
     def set_students(self, value):
         self.__students = value
-
-
