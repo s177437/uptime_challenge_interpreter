@@ -1,3 +1,6 @@
+__author__ = 'Stian Stroem Anderssen'
+
+
 class DbAccount():
     """
     This is a module for the DbAccount object

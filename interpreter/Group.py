@@ -1,3 +1,6 @@
+__author__ = 'Stian Stroem Anderssen'
+
+
 class Group():
     """
     This function creates a group object

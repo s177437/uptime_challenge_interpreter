@@ -1,3 +1,6 @@
+__author__ = 'Stian Stroem Anderssen'
+
+
 class Teacher():
     name = ""
     course = ""

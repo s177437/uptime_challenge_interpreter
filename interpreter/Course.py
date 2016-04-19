@@ -1,3 +1,6 @@
+__author__ = 'Stian Stroem Anderssen'
+
+
 class Course():
     """
 This module aims to build a course object and fill it with metainformation provided in the config.
