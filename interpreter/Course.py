@@ -31,7 +31,7 @@ This module aims to build a course object and fill it with metainformation provi
         """
         return self.groups
 
-    def setGroupList(self, group):
+    def set_group_list(self, group):
         """
         Function to properly set a group_name
         :param group:
